@@ -30,9 +30,11 @@ namespace TekusWebAPI
 
             //repositories
             builder.Services.AddScoped<IProviderRepository, ProviderRepository>();
+            builder.Services.AddScoped<IProviderServicesRepository, ProviderServicesRepository>();
 
             //bll
             builder.Services.AddScoped<IProviderManager,ProviderManager>();
+            builder.Services.AddScoped<IProviderServicesManager, ProviderServicesManager>();
 
 
 

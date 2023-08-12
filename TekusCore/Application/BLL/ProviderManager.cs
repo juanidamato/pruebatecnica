@@ -24,7 +24,6 @@ namespace TekusCore.Application.BLL
             _logger = logger;
             _providerRepo = providerRepo;
         }
-
      
         public async Task<(OperationStatusModel, List<ProviderEntity>?)> GetProvidersAdmin(GetProvidersAdminQuery request)
         {
@@ -83,6 +82,7 @@ namespace TekusCore.Application.BLL
             }
         }
 
+        //todo do another method GetProviderById and called from here
         public async Task<(OperationStatusModel, ProviderEntity?)> GetProviderByIdEncrypted(GetProviderByIdEncryptedQuery request)
         {
             OperationStatusModel response = new OperationStatusModel();
@@ -160,6 +160,7 @@ namespace TekusCore.Application.BLL
                 return (response, null);
             }
         }
-
+    
+    
     }
 }

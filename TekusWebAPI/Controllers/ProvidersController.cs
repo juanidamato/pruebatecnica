@@ -10,7 +10,7 @@ using TekusWebAPI.Utils;
 
 namespace TekusWebAPI.Controllers
 {
-   
+
     [ApiController]
     public class ProvidersController : ControllerBase
     {
@@ -34,7 +34,7 @@ namespace TekusWebAPI.Controllers
         [RequiredScope("api.access")]
         [HttpGet]
         [Route("api/provider")]
-        public async  Task<ActionResult> GetProvidersAdmin(
+        public async Task<ActionResult> GetProvidersAdmin(
             int page,
             int recordsperpage,
             string sortby,
@@ -52,8 +52,13 @@ namespace TekusWebAPI.Controllers
             return mapperResultUtil.MapToActionResult(result);
         }
 
-        //[Authorize]
-        //[RequiredScope("api.access")]
+        /// <summary>
+        /// Ge provider info by Id Provider Encrypted
+        /// </summary>
+        /// <param name="idEncrypted"></param>
+        /// <returns></returns>
+        [Authorize]
+        [RequiredScope("api.access")]
         [HttpGet]
         [Route("api/provider/{idEncrypted}")]
         public async Task<ActionResult> GetProviderByIdEncrypted(
@@ -70,5 +75,38 @@ namespace TekusWebAPI.Controllers
             return mapperResultUtil.MapToActionResult(result);
         }
 
+        //todo
+        //[Authorize]
+        //[RequiredScope("api.access")]
+        //[HttpPost]
+        //[Route("api/provider/")]
+        //public async Task<ActionResult> CreateProvider(
+        //    CreateProviderInputDTO  input
+        //   )
+        //{
+        //}
+
+        //todo
+        //[Authorize]
+        //[RequiredScope("api.access")]
+        //[HttpPut]
+        //[Route("api/provider/{idEncrypted}")]
+        //public async Task<ActionResult> UpdateProvider(
+        //      string idEncrypted,
+        //      UpdateProviderInputDTO  input
+        //   )
+        //{
+        //}
+
+        //todo
+        //[Authorize]
+        //[RequiredScope("api.access")]
+        //[HttpDelete]
+        //[Route("api/provider/{idEncrypted}")]
+        //public async Task<ActionResult> DeleteProvider(
+        //      string idEncrypted
+        //   )
+        //{
+        //}
     }
 }
