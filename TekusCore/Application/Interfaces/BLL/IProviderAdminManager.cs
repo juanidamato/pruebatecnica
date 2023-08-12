@@ -7,10 +7,10 @@ using TekusCore.Application.Features.Providers.Querys;
 using TekusCore.Domain.Commons;
 using TekusCore.Domain.Entities;
 
-namespace TekusCore.Application.Interfaces
+namespace TekusCore.Application.Interfaces.BLL
 {
     public interface IProviderAdminManager
     {
-        Task<(OperationStatusModel,List<ProviderEntity>)> GetProvidersAdmin(GetProvidersAdminQuery request);
+        Task<(OperationStatusModel, List<ProviderEntity>?)> GetProvidersAdmin(GetProvidersAdminQuery request);
     }
 }

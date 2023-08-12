@@ -6,8 +6,12 @@ using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text;
 using TekusCore.Application;
-using TekusCore.Application.Interfaces;
 using TekusCore.Application.BLL;
+using TekusCore.Application.Interfaces.BLL;
+using TekusCore.Application.Interfaces.Infrastructure;
+using TekusCore.Application.Interfaces.Repositories;
+using TekusCore.Infrastructure.Helpers;
+using TekusCore.Infrastructure.Repositories;
 
 namespace TekusWebAPI
 {
@@ -17,9 +21,17 @@ namespace TekusWebAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
-
+            //automapper, fluent validator, mediators
+            //auto discovery on dll assembly
             builder.Services.AddTekusApplication();
 
+            //helpers
+            builder.Services.AddScoped<IDatabaseHelper, SqlDatabaseHelper>();
+
+            //repositories
+            builder.Services.AddScoped<IProviderRepository, ProviderRepository>();
+
+            //bll
             builder.Services.AddScoped<IProviderAdminManager,ProviderAdminManager>();
 
 
@@ -82,6 +94,10 @@ namespace TekusWebAPI
             });
 
             var app = builder.Build();
+
+            //configure reversehash with property injection
+            IConfiguration? config= app.Services.GetService<IConfiguration>();
+            TekusCore.Application.BLL.ReverseHash.SetSalt(config!["HashIdsSalt"]!);
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
