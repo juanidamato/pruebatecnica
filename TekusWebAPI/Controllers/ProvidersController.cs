@@ -30,8 +30,8 @@ namespace TekusWebAPI.Controllers
         /// <param name="sortby">Order field</param>
         /// <param name="sortdirection">Sort direction ASC or DESC</param>
         /// <returns></returns>
-        //[Authorize]
-        //[RequiredScope("api.access")]
+        [Authorize]
+        [RequiredScope("api.access")]
         [HttpGet]
         [Route("api/provider")]
         public async  Task<ActionResult> GetProvidersAdmin(
