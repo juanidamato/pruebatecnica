@@ -44,5 +44,26 @@ namespace TekusCore.Infrastructure.Repositories
                 return (false, null);
             }
         }
+
+        public async Task<(bool, ProviderEntity?)> GetProviderById(int id)
+        {
+            try
+            {
+                var r = await _db.GetArrayDataAsync<ProviderEntity, dynamic>("Provider_Select_ByPK", new { IdProvider = id });
+                if (r is null)
+                {
+                    return (true, null);
+                }
+                else
+                {
+                    return (true, r.FirstOrDefault<ProviderEntity?>());
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception Error in GetProviderById");
+                return (false, null);
+            }
+        }
     }
 }

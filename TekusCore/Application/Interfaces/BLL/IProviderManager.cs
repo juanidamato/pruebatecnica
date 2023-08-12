@@ -9,8 +9,11 @@ using TekusCore.Domain.Entities;
 
 namespace TekusCore.Application.Interfaces.BLL
 {
-    public interface IProviderAdminManager
+    public interface IProviderManager
     {
         Task<(OperationStatusModel, List<ProviderEntity>?)> GetProvidersAdmin(GetProvidersAdminQuery request);
+        Task<(OperationStatusModel, ProviderEntity?)> GetProviderByIdEncrypted(GetProviderByIdEncryptedQuery request);
+
+        
     }
 }

@@ -10,5 +10,6 @@ namespace TekusCore.Application.Interfaces.Repositories
     public interface IProviderRepository
     {
         public Task<(bool, List<ProviderEntity>?)> GetAllProviders();
+        public Task<(bool, ProviderEntity?)> GetProviderById(int id);
     }
 }

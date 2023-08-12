@@ -32,7 +32,7 @@ namespace TekusWebAPI
             builder.Services.AddScoped<IProviderRepository, ProviderRepository>();
 
             //bll
-            builder.Services.AddScoped<IProviderAdminManager,ProviderAdminManager>();
+            builder.Services.AddScoped<IProviderManager,ProviderManager>();
 
 
 

@@ -90,11 +90,11 @@ namespace TekusCore.Application.Features.Providers.Querys
     public class GetProvidersAdminQueryHandler : IRequestHandler<GetProvidersAdminQuery, GetProvidersAdminQueryResponse>
     {
         private readonly IMapper _mapper;
-        private readonly IProviderAdminManager _providerManager;
+        private readonly IProviderManager _providerManager;
 
         public GetProvidersAdminQueryHandler(
             IMapper mapper,
-            IProviderAdminManager providerManager)
+            IProviderManager providerManager)
         {
             _mapper = mapper;
             _providerManager = providerManager;

@@ -20,7 +20,7 @@ namespace TekusTests.UnitTest
         public async Task ProviderAdminManager_ProvidingInvalidPaginationValue_ReturnError()
         {
             //arrange
-            Mock<ILogger<ProviderAdminManager>> logger = new Mock<ILogger<ProviderAdminManager>>();
+            Mock<ILogger<ProviderManager>> logger = new Mock<ILogger<ProviderManager>>();
             Mock<IProviderRepository> repo = new Mock<IProviderRepository>();
             OperationStatusModel op;
             List<ProviderEntity>? data;
@@ -31,7 +31,7 @@ namespace TekusTests.UnitTest
             request.SortBy = "NAMEX";
 
             //act
-            var sut=new ProviderAdminManager(logger.Object,repo.Object);
+            var sut=new ProviderManager(logger.Object,repo.Object);
             (op, data) = await sut.GetProvidersAdmin(request);
 
             //assert

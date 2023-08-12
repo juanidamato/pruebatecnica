@@ -35,7 +35,7 @@ namespace TekusWebAPI.Controllers
         [HttpGet]
         [Route("api/provider")]
         public async  Task<ActionResult> GetProvidersAdmin(
-           int page,
+            int page,
             int recordsperpage,
             string sortby,
             string sortdirection)
@@ -52,7 +52,23 @@ namespace TekusWebAPI.Controllers
             return mapperResultUtil.MapToActionResult(result);
         }
 
-      
+        //[Authorize]
+        //[RequiredScope("api.access")]
+        [HttpGet]
+        [Route("api/provider/{idEncrypted}")]
+        public async Task<ActionResult> GetProviderByIdEncrypted(
+            string idEncrypted
+           )
+        {
+            HttpMapperResultUtil mapperResultUtil = new();
+            GetProviderByIdEncryptedQuery query = new();
+            GetProviderByIdEncryptedQueryResponse result;
+
+            query.IdEncrypted = idEncrypted;
+
+            result = await _mediator.Send(query);
+            return mapperResultUtil.MapToActionResult(result);
+        }
 
     }
 }
